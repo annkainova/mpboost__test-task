@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>mpboost test-task</title>
+</head>
+
+<style>
+  :root {
+    --font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+    --main-font-size: 1rem;
+    --header-font-size: 1.25rem;
+
+    --content-width: 1152px;
+    --container-offset: 20px;
+    --container-width: calc(var(--content-width) + (var(--container-offset) * 2));
+
+    --dark-color: #242424;
+    --accent-color: #4a48c7;
+    --light-color: #fff;
+    --grey-color: #ffffffde;
+  }
+
+  * {
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    overflow-x: hidden;
+    height: 100%;
+    min-width: 360px;
+
+    font-family: var(--font-family), sans-serif;
+    font-size: var(--main-font-size, 16px);
+  }
+
+  .button {
+    border-radius: 200px;
+    padding: 1rem;
+    font-size: 1.25rem;
+    font-weight: 400;
+    font-family: inherit;
+    color: var(--light-color);
+    background-color: var(--accent-color);
+    border: none;
+    cursor: pointer;
+    transition: border-color 0.25s;
+  }
+
+  .banner {
+    display: grid;
+    grid-template-columns: auto max-content;
+    padding: 1.5rem 2rem;
+    box-sizing: border-box;
+    width: 100%;
+    background-color: rgb(18 18 18)
+  }
+
+  .banner__text-box {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .banner__header {
+    margin: 0;
+    color: var(--light-color);
+    font-size: var(--header-font-size);
+    font-weight: 700;
+  }
+
+  .banner__text {
+    margin: 0;
+    color: var(--grey-color);
+  }
+
+  .rotate {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+</style>
+
+<body>
+  <div id="app">
+
+    <div class="banner" id="banner">
+      <div class="banner__text-box">
+        <p class="banner__header">Lorem ipsum dolor sit</p>
+        <p class="banner__text">Lorem ipsum, dolor sit amet consectetur adipisicing elit.</p>
+      </div>
+      <button id="btnBanner" class="button">Число кликов: 0</button>
+    </div>
+  </div>
+
+  <script>
+    let count = 0;
+
+    const button = document.getElementById('btnBanner');
+    const bannerTextBox = document.querySelector('.banner__text-box');
+
+    button.addEventListener('click', handleButtonClick);
+
+    function handleButtonClick() {
+      count += 1;
+      button.textContent = `Число кликов: ${count}`;
+
+      bannerTextBox.classList.contains('rotate')
+        ? bannerTextBox.classList.remove('rotate')
+        : bannerTextBox.classList.add('rotate');
+    }
+  </script>
+</body>
+
+</html>
